@@ -1,5 +1,5 @@
 const schedule = require('node-schedule');
-const http = require('http');
+const https = require('https');
 const LCDPLATE = require('adafruit-i2c-lcd').plate;
 var lcd = new LCDPLATE(1, 0x20);
 
@@ -16,10 +16,10 @@ var urls = [
 
 var job = schedule.scheduleJob('*/1 * * * *', function() {
   var total = 0, count = 0
-  urls.forEach(function(value) {
+  urls.forEach(function(url) {
     lcd.backlight(lcd.colors.OFF);
     count += 1
-    http.get(url, function(res) {
+    https.get(url, function(res) {
       if(res.statusCode == 200) {
         total += 1
       }
