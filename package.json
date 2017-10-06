@@ -4,7 +4,7 @@
   "description": "A little playground for a I2C RPi3 LCD 16x02 RBG Plate",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && node index.js"
+    "start": "npm install && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
