@@ -4,6 +4,7 @@ const sleep = require('sleep');
 const LCDPLATE = require('adafruit-i2c-lcd').plate;
 var lcd = new LCDPLATE(1, 0x20);
 
+lcd.sendBytes(0, 0x1F); // Sainsmart 1602 I2C backlight on
 lcd.backlight(lcd.colors.WHITE);
 lcd.clear();
 
@@ -17,7 +18,6 @@ var urls = [
 
 var job = schedule.scheduleJob('*/1 * * * *', function() {
   console.log("Job started running ...")
-  lcd.sendBytes(0, 0x1F); // Sainsmart 1602 I2C backlight on
 
   var total = 0, count = 0
   urls.forEach(function(url) {
@@ -50,8 +50,6 @@ var job = schedule.scheduleJob('*/1 * * * *', function() {
     lcd.message(`${urls.length - total} Down`);
     lcd.backlight(lcd.colors.RED);
   }
-
-  lcd.sendBytes(0, 0x3F); // Sainsmart 1602 I2C backlight off
 
   console.log("Job finished running.")
 });
