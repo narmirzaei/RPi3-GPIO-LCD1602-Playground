@@ -34,24 +34,23 @@ var job = schedule.scheduleJob('*/1 * * * *', function() {
       lcd.clear();
       lcd.message(`${count} / ${urls.length}`);
 
-      sleep.sleep(1) //Sleep 1 second
+      sleep.sleep(2) //Sleep 1 second
+
+      if(count == urls.legnth) {
+        lcd.clear();
+        if(total == urls.length) {
+          console.log("All urls are UP")
+          lcd.message("All Good!");
+          lcd.backlight(lcd.colors.GREEN);
+        } else {
+          console.log(`${urls.length - total} urls are DOWN`)
+          lcd.message(`${urls.length - total} Down`);
+          lcd.backlight(lcd.colors.RED);
+        }
+        console.log("Job finished running.")
+      }
     });
   });
-
-  sleep.sleep(1)
-
-  lcd.clear();
-  if(total == urls.length) {
-    console.log("All urls are UP")
-    lcd.message("All Good!");
-    lcd.backlight(lcd.colors.GREEN);
-  } else {
-    console.log(`${urls.length - total} urls are DOWN`)
-    lcd.message(`${urls.length - total} Down`);
-    lcd.backlight(lcd.colors.RED);
-  }
-
-  console.log("Job finished running.")
 });
 
 console.log("Job is scheduled to run every 1 minute...")
