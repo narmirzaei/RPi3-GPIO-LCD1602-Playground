@@ -1,0 +1,19 @@
+{
+  "name": "rpi3-gpio-lcd1602-playground",
+  "version": "1.0.0",
+  "description": "A little playground for a I2C RPi3 LCD 16x02 RBG Plate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narmirzaei/RPi3-GPIO-LCD1602-Playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/narmirzaei/RPi3-GPIO-LCD1602-Playground/issues"
+  },
+  "homepage": "https://github.com/narmirzaei/RPi3-GPIO-LCD1602-Playground#readme"
+}
