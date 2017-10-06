@@ -19,6 +19,7 @@
   "homepage": "https://github.com/narmirzaei/RPi3-GPIO-LCD1602-Playground#readme",
   "dependencies": {
     "adafruit-i2c-lcd": "^1.0.2",
-    "node-schedule": "^1.2.5"
+    "node-schedule": "^1.2.5",
+    "sleep": "^5.1.1"
   }
 }
