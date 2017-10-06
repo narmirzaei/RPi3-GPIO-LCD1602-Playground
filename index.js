@@ -15,9 +15,10 @@ var urls = [
 ]
 
 var job = schedule.scheduleJob('*/1 * * * *', function() {
+  lcd.sendBytes(0, 0x1F); // Sainsmart 1602 I2C backlight on
+  
   var total = 0, count = 0
   urls.forEach(function(url) {
-    lcd.backlight(lcd.colors.OFF);
     count += 1
     https.get(url, function(res) {
       if(res.statusCode == 200) {
@@ -25,7 +26,6 @@ var job = schedule.scheduleJob('*/1 * * * *', function() {
       }
       lcd.clear();
       lcd.message(`${count} / ${urls.length}`);
-      lcd.backlight(lcd.colors.ON);
     });
   });
 
@@ -37,4 +37,6 @@ var job = schedule.scheduleJob('*/1 * * * *', function() {
     lcd.message(`${urls.length - total} Down`);
     lcd.backlight(lcd.colors.RED);
   }
+
+  lcd.sendBytes(0, 0x3F); // Sainsmart 1602 I2C backlight off
 });
